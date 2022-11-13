@@ -9,7 +9,6 @@ const images = [
   'https://dr.savee-cdn.com/things/6/3/5fc43487a2bcb7eda67278.webp',
   'https://dr.savee-cdn.com/things/6/3/568e54cc32c7e113cc9e5f.webp',
   'https://dr.savee-cdn.com/things/6/2/14c2425cd11abb3b228b03.webp',
-  'https://dr.savee-cdn.com/things/6/3/42940d95100dab13d5f58d.webp',
   'https://dr.savee-cdn.com/things/6/3/445c08cf0ed4a931689354.webp',
   'https://dr.savee-cdn.com/things/6/3/4235016811907199de939f.png',
   'https://dr.savee-cdn.com/things/6/3/20330bae07d67e6f8badfa.webp',
@@ -18,7 +17,7 @@ const images = [
 
 let imageIndex = 0;
 
-for (let i = 0; i < 80; i++) {
+for (let i = 0; i < 100; i++) {
   let item = {
     id: i,
     title: `Post ${i}`,
