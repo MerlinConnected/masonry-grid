@@ -34,7 +34,6 @@ function generateMasonryGrid(columns, posts) {
       columnDiv.appendChild(postDiv);
     });
     container.appendChild(columnDiv);
-    console.log(columnDiv);
   }
 }
 
@@ -54,8 +53,14 @@ window.addEventListener('resize', () => {
     (screenSize < 600 || screenSize >= 1000)
   ) {
     generateMasonryGrid(2, posts);
-  } else if (window.innerWidth >= 1000 && screenSize < 1000) {
+  } else if (
+    window.innerWidth >= 1000 &&
+    window.innerWidth < 1400 &&
+    (screenSize < 1000 || screenSize >= 1400)
+  ) {
     generateMasonryGrid(4, posts);
+  } else if (window.innerWidth >= 1400 && screenSize < 1400) {
+    generateMasonryGrid(5, posts);
   }
   screenSize = window.innerWidth;
 });
@@ -66,6 +71,47 @@ if (screenSize < 600) {
   generateMasonryGrid(1, posts);
 } else if (screenSize >= 600 && screenSize < 1000) {
   generateMasonryGrid(2, posts);
-} else {
+} else if (screenSize >= 1000 && screenSize < 1400) {
   generateMasonryGrid(4, posts);
+} else {
+  generateMasonryGrid(5, posts);
 }
+
+//Begin cursor
+
+const ball = document.querySelector('.ball');
+
+let mouseX = 0;
+let mouseY = 0;
+
+let ballX = 0;
+let ballY = 0;
+
+let speed = 0.1;
+
+// Update ball position
+function animate() {
+  //Determine distance between ball and mouse
+  let distX = mouseX - ballX;
+  let distY = mouseY - ballY;
+
+  // Find position of ball and some distance * speed
+  ballX = ballX + distX * speed;
+  ballY = ballY + distY * speed;
+
+  ball.style.left = ballX + 'px';
+  ball.style.top = ballY + 'px';
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Move ball with cursor
+document.addEventListener('mousemove', function (event) {
+  mouseX = event.pageX;
+  mouseY = event.pageY;
+});
+
+ball.addEventListener('mouseover', function handleMouseOver() {
+  ball.style.outline = 'rgb(255, 255, 255) solid 20px';
+});

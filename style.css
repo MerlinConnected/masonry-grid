@@ -83,3 +83,17 @@ img {
   opacity: 1;
   cursor: pointer;
 }
+
+.ball {
+  outline: rgb(255, 255, 255) solid 1px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  z-index: 20;
+  pointer-events: none;
+}
